@@ -1,0 +1,8 @@
+title:
+- line: '芒种'
+
+description:
+- line: '时雨及芒种，四野皆插秧。'
+- line: '家家麦饭美，处处菱歌长。'
+- line: '--《时雨》 陆游'
+
