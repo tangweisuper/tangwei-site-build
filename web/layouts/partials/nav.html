@@ -47,6 +47,9 @@
         {{ with .flickr }}
         <li><a href="{{ . }}" class="icon fa-flickr"><span class="label">Flickr</span></a></li>
         {{ end }}
+        {{ with .ebook}}
+        <li><a href="{{ . }}" target="_blank" title="find some ebooks for free" class="icon fa-book"><span class="label">ebook search</span></a></li>
+        {{ end }}
         {{ with .mediaTools}}
         <li><a href="{{ . }}" target="_blank" title="online media tools including video/music/pdf..." class="icon fa-wrench"><span class="label">media tools</span></a></li>
         {{ end }}

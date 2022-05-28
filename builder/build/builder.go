@@ -1,11 +1,19 @@
 package build
 
 import (
+	"fmt"
 	"tangwei-site-build/builder/consts"
 	"tangwei-site-build/builder/core"
 )
 
 func Build() error {
+	//清除dist文件夹
+	output, err := core.Command(fmt.Sprintf("rm -rf %s/*", consts.BuildDistPath))
+	println(output)
+	if err != nil {
+		return err
+	}
+
 	jieqiList := core.Get24JieQi()
 	for _, v := range jieqiList {
 		intro := v.IntroTextPath
