@@ -1,7 +1,7 @@
 package core
 
 import (
-	"io"
+	"io/ioutil"
 	"os"
 )
 
@@ -11,15 +11,14 @@ func WritePic(picPath string, dest string) error {
 		return err
 	}
 
-	file, err := os.OpenFile(dest, os.O_WRONLY|os.O_CREATE, os.ModePerm)
+	data, err := ioutil.ReadAll(src)
 	if err != nil {
 		return err
 	}
 
 	defer src.Close()
-	defer file.Close()
 
-	_, err = io.Copy(file, src)
+	err = ioutil.WriteFile(dest, data, 0666)
 
 	return err
 }
