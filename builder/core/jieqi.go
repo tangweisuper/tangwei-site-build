@@ -83,7 +83,7 @@ func Get24JieQi() []JieQi {
 }
 
 func getPicPath(jieqiName string) string {
-	return path.Join(consts.PicFoldPath, jieqiName+".png")
+	return path.Join(consts.PicFoldPath, jieqiName+".webp")
 }
 
 func getIntroTextPath(jieqiName string) string {

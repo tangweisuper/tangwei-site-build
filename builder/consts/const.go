@@ -4,7 +4,7 @@ const (
 	PicFoldPath  = "resource/pics"
 	TextFoldPath = "resource/text"
 
-	HugoBGPicPath = "web/static/images/bg.png"
+	HugoBGPicPath = "web/static/images/bg.webp"
 	HugoIntroPath = "web/data/en/intro.yaml"
 
 	HugoBuildPath = "web/public"
