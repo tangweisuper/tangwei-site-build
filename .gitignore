@@ -31,4 +31,8 @@ web/resources/_gen
 
 web/.hugo_build.lock
 
+web/data/en/intro.yaml
+
+web/static/images/bg.webp
+
 dist
