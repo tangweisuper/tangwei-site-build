@@ -87,7 +87,7 @@ func getPicPath(jieqiName string) string {
 }
 
 func getIntroTextPath(jieqiName string) string {
-	return path.Join(consts.TextFoldPath, jieqiName+".txt")
+	return path.Join(consts.TextFoldPath, jieqiName+".yaml")
 }
 
 func getBuildDistPath(jieqiName string) string {

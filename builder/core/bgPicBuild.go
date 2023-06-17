@@ -1,8 +1,11 @@
 package core
 
 import (
-	"io/ioutil"
+	"fmt"
+	"io"
+	"log"
 	"os"
+	"tangwei-site-build/builder/consts"
 )
 
 func WritePic(picPath string, dest string) error {
@@ -11,14 +14,25 @@ func WritePic(picPath string, dest string) error {
 		return err
 	}
 
-	data, err := ioutil.ReadAll(src)
+	data, err := io.ReadAll(src)
 	if err != nil {
 		return err
 	}
 
 	defer src.Close()
 
-	err = ioutil.WriteFile(dest, data, 0666)
+	err = os.WriteFile(dest, data, 0666)
 
 	return err
+}
+
+func Copy24Pic(destFolder string) {
+	for k, v := range pingyinMap {
+		src := fmt.Sprintf("%s/%s.webp", consts.PicFoldPath, k)
+		dest := fmt.Sprintf("%s/bg_%s.webp", destFolder, v)
+		err := WritePic(src, dest)
+		if err != nil {
+			log.Println(err.Error())
+		}
+	}
 }

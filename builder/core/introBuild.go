@@ -1,10 +1,12 @@
 package core
 
 import (
+	"fmt"
 	"gopkg.in/yaml.v2"
-	"io/ioutil"
+	"io"
 	"log"
 	"os"
+	"tangwei-site-build/builder/consts"
 )
 
 type Intro struct {
@@ -45,14 +47,30 @@ func WriteYaml(srcPath string, dest string) error {
 		return err
 	}
 
-	data, err := ioutil.ReadAll(src)
+	data, err := io.ReadAll(src)
 	if err != nil {
 		return err
 	}
 
 	defer src.Close()
 
-	err = ioutil.WriteFile(dest, data, 0666)
+	err = os.WriteFile(dest, data, 0666)
 
 	return err
+}
+
+func Copy24Text(destFolder string) {
+	err := os.MkdirAll(destFolder, os.ModePerm)
+	if err != nil {
+		fmt.Println("创建文件夹时出错:", err)
+		return
+	}
+	for k, v := range pingyinMap {
+		src := fmt.Sprintf("%s/%s.yaml", consts.TextFoldPath, k)
+		dest := fmt.Sprintf("%s/%s.yaml", destFolder, v)
+		err := WriteYaml(src, dest)
+		if err != nil {
+			log.Println(err.Error())
+		}
+	}
 }
